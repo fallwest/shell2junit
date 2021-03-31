@@ -116,7 +116,8 @@ juLog() {
   echo "+++ error: $err"         | tee -a $outf
   rm -f $outf
 
-  errMsg=`cat $errf`
+  #errMsg=`cat $errf`
+  errMsg=`cat $errf | sed -e 's/'$(echo "\033")'/ESC/g'`
   rm -f $errf
   # calculate vars
   asserts=`expr $asserts + 1`
