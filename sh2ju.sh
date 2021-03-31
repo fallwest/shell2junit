@@ -117,7 +117,8 @@ juLog() {
   rm -f $outf
 
   #errMsg=`cat $errf`
-  errMsg=`cat $errf | sed -e 's/'$(echo "\033")'/ESC/g'`
+  #errMsg=`cat $errf | sed -e 's/'$(echo "\033")'/ESC/g'`
+  errMsg=`cat $errf | tr -cd '\11\12\15\40-\176'`
   rm -f $errf
   # calculate vars
   asserts=`expr $asserts + 1`
